@@ -1,9 +1,6 @@
 package com.clouway.inputoutput.task4;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
@@ -24,9 +21,8 @@ public class TransferObject {
             System.err.println("No such file!");
         }
 
-        FileOutputStream writer = new FileOutputStream("src/com/clouway/inputoutput/textfiles/Stream");
-        writer.write((new String()).getBytes());
-        writer.close();
+        PrintWriter pw = new PrintWriter("src/com/clouway/inputoutput/textfiles/Stream");
+        pw.close();
 
         return true;
     }
