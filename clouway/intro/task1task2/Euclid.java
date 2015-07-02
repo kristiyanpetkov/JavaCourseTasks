@@ -1,4 +1,4 @@
-package com.clouway.intro.task1;
+package com.clouway.intro.task1task2;
 
 /**
  * Created by clouway on 15-5-4.
@@ -6,10 +6,6 @@ package com.clouway.intro.task1;
 
 public class Euclid {
 
-    public static void main(String args[]) {
-
-
-    }
 
     /**
      * @param x

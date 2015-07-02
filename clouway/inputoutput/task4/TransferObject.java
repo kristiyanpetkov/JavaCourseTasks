@@ -1,34 +1,32 @@
 package com.clouway.inputoutput.task4;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.file.*;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
- * Created by clouway on 15-6-29.
+ * Created by clouway on 15-7-2.
  */
 public class TransferObject {
-    int Y;
-    int N;
-
-
     public boolean move() throws IOException {
 
-        Path path1 = Paths.get("src/com/clouway/inputoutput/textfiles/Stream");
-        Path path2 = Paths.get("src/com/clouway/inputoutput/textfiles/MovedStream");
+        Path path = Paths.get("src/com/clouway/inputoutput/textfiles/Stream");
+        OutputStream out = new FileOutputStream("src/com/clouway/inputoutput/textfiles/OutputStream");
         try {
-            Files.move(path1, path2, StandardCopyOption.ATOMIC_MOVE);
+            Files.copy(path, out);
         } catch (NoSuchFileException nsfe) {
             System.err.println(nsfe);
-            System.err.println("No such file! Do you want to create it?");
-            System.out.println("Please enter Y for \"yes\" or N for \"no\"");
-            int inChar;
-            inChar = System.in.read();
-            if (inChar == 'Y') {
-                File newfile = new File("src/com/clouway/inputoutput/textfiles/MovedStream");
-                move();
-            }
+            System.err.println("No such file!");
         }
+
+        FileOutputStream writer = new FileOutputStream("src/com/clouway/inputoutput/textfiles/Stream");
+        writer.write((new String()).getBytes());
+        writer.close();
 
         return true;
     }

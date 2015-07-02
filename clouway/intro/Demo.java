@@ -5,7 +5,7 @@ package com.clouway.intro;
  */
 
 
-import com.clouway.intro.task1.Euclid;
+import com.clouway.intro.task1task2.Euclid;
 import com.clouway.intro.task3.Array;
 import com.clouway.intro.task4.QuickSort;
 import com.clouway.intro.task5.ReverseArray;
