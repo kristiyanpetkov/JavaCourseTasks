@@ -10,10 +10,10 @@ import java.nio.file.Paths;
  * Created by clouway on 15-7-2.
  */
 public class TransferObject {
-    public boolean move() throws IOException {
+    public boolean move(String inputFile, String outputFile) throws IOException {
 
-        Path path = Paths.get("src/com/clouway/inputoutput/textfiles/Stream");
-        OutputStream out = new FileOutputStream("src/com/clouway/inputoutput/textfiles/OutputStream");
+        Path path = Paths.get(inputFile);
+        OutputStream out = new FileOutputStream(outputFile);
         try {
             Files.copy(path, out);
         } catch (NoSuchFileException nsfe) {
@@ -21,9 +21,32 @@ public class TransferObject {
             System.err.println("No such file!");
         }
 
-        PrintWriter pw = new PrintWriter("src/com/clouway/inputoutput/textfiles/Stream");
+        PrintWriter pw = new PrintWriter(inputFile);
         pw.close();
 
+        return true;
+    }
+
+    public boolean transferChar(String inputFile, String outputFile, int number) throws IOException {
+
+        Path path = Paths.get(inputFile);
+        OutputStream out = new FileOutputStream(outputFile);
+        Reader r = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile), "US-ASCII"));
+        try {
+            int count = 0;
+            while ((r.read() != -1) && count < number) {
+                out.write(r.read());
+                count++;
+            }
+        } catch (NoSuchFileException nsfe) {
+            System.err.println(nsfe);
+            System.err.println("No such file");
+        } finally {
+            r.close();
+        }
+
+        PrintWriter pw = new PrintWriter(inputFile);
+        pw.close();
         return true;
     }
 }

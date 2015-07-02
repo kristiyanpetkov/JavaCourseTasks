@@ -8,6 +8,10 @@ import java.io.IOException;
 public class TransferObjectDemo {
     public static void main(String[] args) throws IOException {
         TransferObject transfer = new TransferObject();
-        transfer.move();
+        String inputFile="src/com/clouway/inputoutput/textfiles/Stream";
+        String outputFile="src/com/clouway/inputoutput/textfiles/OutputStream";
+       // transfer.move(inputFile,outputFile);
+        transfer.transferChar(inputFile,outputFile,7);
+
     }
 }
